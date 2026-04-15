@@ -1,6 +1,14 @@
 import { Stack, Typography } from "@mui/material";
 
-export function EmptyState() {
+type EmptyStateProps = {
+  description?: string;
+  title?: string;
+};
+
+export function EmptyState({
+  description = "Add a task to get your list started.",
+  title = "No todos yet"
+}: EmptyStateProps) {
   return (
     <Stack
       spacing={1}
@@ -16,10 +24,8 @@ export function EmptyState() {
         textAlign: "center"
       }}
     >
-      <Typography variant="h6">No todos yet</Typography>
-      <Typography color="text.secondary">
-        Add a task to get your list started.
-      </Typography>
+      <Typography variant="h6">{title}</Typography>
+      <Typography color="text.secondary">{description}</Typography>
     </Stack>
   );
 }

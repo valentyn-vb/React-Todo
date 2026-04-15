@@ -1,14 +1,39 @@
 "use client";
 
+import { useState } from "react";
 import { Chip, Container, Paper, Stack, Typography } from "@mui/material";
+import { TodoFilters } from "@/components/todo/todo-filters";
 import { TodoInput } from "@/components/todo/todo-input";
 import { TodoList } from "@/components/todo/todo-list";
 import { useTodos } from "@/hooks/use-todos";
+import type { TodoFilter } from "@/types/todo";
 
 export function TodoApp() {
   const { todos, addTodo, toggleTodo, deleteTodo } = useTodos();
+  const [filter, setFilter] = useState<TodoFilter>("all");
 
   const completedCount = todos.filter((todo) => todo.completed).length;
+  const openCount = todos.length - completedCount;
+
+  const filteredTodos = todos.filter((todo) => {
+    if (filter === "open") {
+      return !todo.completed;
+    }
+
+    if (filter === "completed") {
+      return todo.completed;
+    }
+
+    return true;
+  });
+
+  const handleAddTodo = (text: string) => {
+    addTodo(text);
+
+    if (filter === "completed") {
+      setFilter("all");
+    }
+  };
 
   return (
     <Container maxWidth="sm" sx={{ py: { xs: 4, md: 8 } }}>
@@ -40,14 +65,26 @@ export function TodoApp() {
               sx={{ flexWrap: "wrap" }}
             >
               <Chip label={`${todos.length} total`} color="primary" variant="outlined" />
+              <Chip label={`${openCount} open`} variant="outlined" />
               <Chip label={`${completedCount} completed`} variant="outlined" />
             </Stack>
           </Stack>
 
-          <TodoInput onAddTodo={addTodo} />
+          <Stack spacing={2}>
+            <TodoInput onAddTodo={handleAddTodo} />
+            <TodoFilters
+              completedCount={completedCount}
+              currentFilter={filter}
+              onFilterChange={setFilter}
+              openCount={openCount}
+              totalCount={todos.length}
+            />
+          </Stack>
 
           <TodoList
-            todos={todos}
+            activeFilter={filter}
+            hasTodos={todos.length > 0}
+            todos={filteredTodos}
             onDeleteTodo={deleteTodo}
             onToggleTodo={toggleTodo}
           />
