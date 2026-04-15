@@ -1,5 +1,7 @@
-import { TodoAppShell } from "@/components/todo/todo-app-shell";
+"use client";
+
+import { TodoApp } from "@/components/todo/todo-app";
 
 export default function HomePage() {
-  return <TodoAppShell />;
+  return <TodoApp />;
 }
