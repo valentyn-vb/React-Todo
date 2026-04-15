@@ -24,14 +24,14 @@ export function TodoApp() {
         <Stack spacing={4} sx={{ p: { xs: 3, md: 4 } }}>
           <Stack spacing={2}>
             <Typography component="p" variant="overline" color="primary.main">
-              React Todo Coach
+              FocusList
             </Typography>
             <Typography variant="h3" sx={{ fontSize: { xs: "2rem", md: "2.5rem" } }}>
-              Learn the todo flow step by step
+              Keep today&apos;s tasks in one clear place
             </Typography>
             <Typography color="text.secondary">
-              This version keeps the UI small and the React logic explicit: one
-              state hook, small components, and predictable event handlers.
+              Built with Next.js, TypeScript, Material UI, and local storage,
+              using small components around a single todo state hook.
             </Typography>
             <Stack
               direction="row"

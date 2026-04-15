@@ -34,7 +34,7 @@ export function TodoInput({ onAddTodo }: TodoInputProps) {
         fullWidth
         label="Add a new todo"
         onChange={(event) => setValue(event.target.value)}
-        placeholder="Example: Review React state flow"
+        placeholder="Example: Prepare project notes"
         value={value}
       />
       <Button size="large" type="submit" variant="contained">

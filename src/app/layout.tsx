@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "React Todo Coach",
+  title: "FocusList",
   description:
-    "A small Todo app built with Next.js, TypeScript, and Material UI.",
+    "A clean todo app built with Next.js, TypeScript, Material UI, and local storage.",
 };
 
 export default function RootLayout({

@@ -18,7 +18,7 @@ export function EmptyState() {
     >
       <Typography variant="h6">No todos yet</Typography>
       <Typography color="text.secondary">
-        Add your first task to start practicing React state updates.
+        Add a task to get your list started.
       </Typography>
     </Stack>
   );
